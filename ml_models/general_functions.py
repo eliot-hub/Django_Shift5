@@ -115,7 +115,7 @@ def parse_document(text):
     - Duplicate entries are removed from the lists, ensuring uniqueness.
     """
     # Load spaCy model
-    nlp_model = spacy.load(os.path.join(PATH, "model-best-distilbert"))
+    nlp_model = spacy.load("en_pipeline")
     
     doc = nlp_model(text)
     parsed_info = {
@@ -165,7 +165,7 @@ def similarity_score(cv_desc, job_desc):
     >>> similarity_score(cv_description, job_description, similarity_model)
     0.9123
     """
-    modelPath = os.path.join(PATH, "model-all-MiniLM-L6-v2", "model")
+    modelPath = os.path.join(PATH, "model-all-MiniLM-L6-v2", "model")  # TODO : push model to huggingface
     model = SentenceTransformer(modelPath)
     embeddings = model.encode([cv_desc, job_desc])
 
